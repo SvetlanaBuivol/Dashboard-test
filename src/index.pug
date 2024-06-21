@@ -4,5 +4,12 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
+        style 
+            include ../css/main.css
     body 
-        h1 Hello world! 
+        include components/header
+        main
+            section 
+                .container
+                    include pages/customers
+        script(src='../main.js')

@@ -1,0 +1,263 @@
+.greatings {
+  position: relative;
+  width: fit-content;
+  font-size: $m;
+  color: $black-text-color;
+  padding-right: 28px;
+  margin-bottom: 40px;
+
+  @include mediaTablet {
+    font-size: $l;
+    margin-bottom: 51px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-image: url("src/assets/svg/hello.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.table-box {
+  background-color: $white-bg-color;
+  border-radius: 30px;
+  width: 100%;
+  overflow-x: auto;
+
+  @include mediaDesktop {
+    width: 968px;
+  }
+}
+
+#allMembers {
+  display: block;
+  text-align: left;
+  color: $black-text-color;
+  font-weight: 600;
+  font-size: 12px;
+  &.active-button {
+    font-size: $xs;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @include mediaTablet {
+    font-size: $m;
+    &.active-button {
+      font-size: $s;
+    }
+  }
+}
+
+#activeMembers {
+  display: block;
+  font-size: $xs;
+  font-weight: 400;
+  color: $green-text-color;
+  margin-top: 7px;
+  &.active-button {
+    font-size: 12px;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @include mediaTablet {
+    font-size: $s;
+    &.active-button {
+      font-size: $m;
+    }
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  width: 145px;
+  height: fit-content;
+  input {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    background-color: $input-bg-color;
+    padding: 8px 8px 8px 34px;
+    font-size: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 200ms ease;
+
+    &:focus,
+    &:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+  }
+
+  @include mediaTablet {
+    width: 170px;
+  }
+  @include mediaDesktop {
+    width: 216px;
+    input {
+      padding: 10px 10px 10px 40px;
+    }
+  }
+}
+
+.table__head {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mediaDesktop {
+    padding: 30px 53px 26px 38px;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table__header-row {
+  th {
+    padding: 12px 0;
+    color: $secondary-text-color;
+    font-weight: 500;
+    font-size: $xs;
+    border-bottom: 1px solid $table-border-color;
+    text-align: left;
+
+    &:first-child {
+      padding-left: 25px;
+    }
+
+    &:last-child {
+      padding-right: 20px;
+    }
+  }
+
+  @include mediaTablet {
+    th {
+      font-size: 12px;
+    }
+  }
+
+  @include mediaDesktop {
+    th {
+      padding: 14px 0;
+      font-size: $s;
+      &:first-child {
+        padding-left: 38px;
+      }
+      &:last-child {
+        padding-right: 44px;
+      }
+    }
+  }
+}
+
+.table__body-row {
+  td {
+    min-width: 70px;
+    max-width: 100px;
+    overflow-wrap: break-word;
+    font-size: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: $table-border-color;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    &:first-child::after {
+      left: 25px;
+      width: calc(100% - 25px);
+    }
+
+    &:last-child::after {
+      width: calc(100% - 20px);
+    }
+
+    &:first-child {
+      padding-left: 25px;
+    }
+
+    &:last-child {
+      padding-right: 20px;
+    }
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      font-weight: 500;
+      margin: 0;
+      border-radius: 4px;
+      padding: 4px 8px;
+      &.active {
+        color: $status-active-text-color;
+        border: 1px solid $status-active-border-color;
+        background-color: $status-active-bg-color;
+      }
+      &.inactive {
+        color: $status-inactive-text-color;
+        border: 1px solid $status-inactive-text-color;
+        background-color: $status-inactive-bg-color;
+      }
+    }
+  }
+
+  @include mediaTablet {
+    td {
+    }
+  }
+
+  @include mediaDesktop {
+    td {
+      font-size: $s;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      &:first-child {
+        padding-left: 38px;
+      }
+
+      &:last-child {
+        padding-right: 44px;
+      }
+
+      &:first-child::after {
+        left: 38px;
+        width: calc(100% - 38px);
+
+        &:last-child::after {
+          width: calc(100% - 44px);
+        }
+      }
+      p {
+        width: 80px;
+        padding: 4px 18px;
+      }
+    }
+  }
+}

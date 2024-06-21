@@ -1,0 +1,24 @@
+.user {
+    display: none;
+    gap: 12px;
+    align-items: center;
+    margin-top: auto;
+
+    img {
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    @include mediaTablet {
+        display: flex;
+    }
+}
+
+.user-name {
+    color: $black-text-color;
+}
+
+.user-position {
+    color: $grey-text-color;
+    font-weight: 400;
+}
