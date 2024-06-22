@@ -1,0 +1,139 @@
+.pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 25px;
+
+    @include mediaDesktop {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 40px 40px 38px;
+    }
+}
+
+.page-info {
+    color: $secondary-text-color;
+    font-size: 12px;
+
+    @include mediaDesktop {
+        font-size: $s;
+    }
+}
+
+#pagination {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+  margin: auto;
+
+  @include mediaDesktop {
+    gap: 12px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 20px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #f5f5f5;
+  border: 1px solid #eeeeee;
+  color: #404b52;
+
+  @include mediaDesktop {
+    width: 25px;
+    height: 24px;
+    padding: 6px 8px;
+  }
+}
+
+.current {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 20px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #5932ea;
+  color: #ffffff;
+
+  @include mediaDesktop {
+    width: 25px;
+    height: 24px;
+    padding: 6px 8px;
+  }
+}
+
+.current.next,
+.page-link.next,
+.current.prev,
+.page-link.prev {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+width: 22px;
+    height: 20px;
+    padding: 4px 6px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  border: 1px solid #eeeeee;
+  color: #f5f5f5;
+
+@include mediaDesktop {
+        width: 25px;
+        height: 24px;
+        padding: 6px 8px;
+    }
+}
+
+.current.prev,
+.page-link.prev {
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 12px;
+    background-image: url("src/assets/svg/prev.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.current.prev::before {
+  filter: brightness(1.6);
+  opacity: 0.5;
+}
+
+.current.next,
+.page-link.next {
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 12px;
+    background-image: url("src/assets/svg/next.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.current.next::before {
+  filter: brightness(1.6);
+  opacity: 0.5;
+}
+
+.ellipse {
+  font-size: 12px;
+}

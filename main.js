@@ -1,52 +1,784 @@
-const showActiveMembersButton = document.getElementById("activeMembers");
-const showAllMembersButton = document.getElementById("allMembers");
-// const allMembers = document.getElementById("dataTable").getElementsByTagName("tr");
-const allMembers = document.querySelectorAll("#dataTable tbody tr");
-let allMembersShown = false;
+document.addEventListener("DOMContentLoaded", () => {
+  const data = [
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jacob Jones",
+      company: "Yahoo",
+      phone: "(208) 555-0112",
+      email: "jacob@yahoo.com",
+      country: "Brazil",
+      status: true,
+    },
+    {
+      name: "Kristin Watson",
+      company: "Facebook",
+      phone: "(704) 555-0127",
+      email: "kristin@facebook.com",
+      country: "Åland Islands",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jacob Jones",
+      company: "Yahoo",
+      phone: "(208) 555-0112",
+      email: "jacob@yahoo.com",
+      country: "Brazil",
+      status: true,
+    },
+    {
+      name: "Kristin Watson",
+      company: "Facebook",
+      phone: "(704) 555-0127",
+      email: "kristin@facebook.com",
+      country: "Åland Islands",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jacob Jones",
+      company: "Yahoo",
+      phone: "(208) 555-0112",
+      email: "jacob@yahoo.com",
+      country: "Brazil",
+      status: true,
+    },
+    {
+      name: "Kristin Watson",
+      company: "Facebook",
+      phone: "(704) 555-0127",
+      email: "kristin@facebook.com",
+      country: "Åland Islands",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jacob Jones",
+      company: "Yahoo",
+      phone: "(208) 555-0112",
+      email: "jacob@yahoo.com",
+      country: "Brazil",
+      status: true,
+    },
+    {
+      name: "Kristin Watson",
+      company: "Facebook",
+      phone: "(704) 555-0127",
+      email: "kristin@facebook.com",
+      country: "Åland Islands",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+    {
+      name: "Jacob Jones",
+      company: "Yahoo",
+      phone: "(208) 555-0112",
+      email: "jacob@yahoo.com",
+      country: "Brazil",
+      status: true,
+    },
+    {
+      name: "Kristin Watson",
+      company: "Facebook",
+      phone: "(704) 555-0127",
+      email: "kristin@facebook.com",
+      country: "Åland Islands",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Jane Cooper",
+      company: "Microsoft",
+      phone: "(225) 555-0118",
+      email: "jane@microsoft.com",
+      country: "United States",
+      status: true,
+    },
+    {
+      name: "Floyd Miles",
+      company: "Yahoo",
+      phone: "(205) 555-0100",
+      email: "floyd@yahoo.com",
+      country: "Kiribati",
+      status: false,
+    },
+    {
+      name: "Ronald Richards",
+      company: "Adobe",
+      phone: "(302) 555-0107",
+      email: "ronald@adobe.com",
+      country: "Israel",
+      status: false,
+    },
+    {
+      name: "Marvin McKinney",
+      company: "Tesla",
+      phone: "(252) 555-0126",
+      email: "marvin@tesla.com",
+      country: "Iran",
+      status: true,
+    },
+    {
+      name: "Jerome Bell",
+      company: "Google",
+      phone: "(629) 555-0129",
+      email: "jerome@google.com",
+      country: "Réunion",
+      status: true,
+    },
+    {
+      name: "Kathryn Murphy",
+      company: "Microsoft",
+      phone: "(406) 555-0120",
+      email: "kathryn@microsoft.com",
+      country: "Curaçao",
+      status: true,
+    },
+  ];
 
-showActiveMembersButton.addEventListener("click", function () {
-  filterMembers(true);
-  showActiveMembersButton.classList.toggle("active-button");
-  showAllMembersButton.classList.toggle("active-button");
-});
+  const itemsPerPage = 8;
+  let currentPage = 1;
+  let filteredData = [...data];
+  let showOnlyActive = false;
 
-showAllMembersButton.addEventListener("click", function () {
-  filterMembers(false);
-  showActiveMembersButton.classList.toggle("active-button");
-  showAllMembersButton.classList.toggle("active-button");
-});
-
-function filterMembers(showActive) {
-  allMembers.forEach((row) => {
-    const statusCell = row.getElementsByTagName("td")[5];
-    const status = statusCell
-      ? statusCell.textContent.trim().toLowerCase()
-      : "";
-    if (showActive && status !== "active") {
-      row.style.display = "none";
-    } else {
-      row.style.display = "";
-    }
+  const showActiveMembersButton = document.getElementById("activeMembers");
+  const showAllMembersButton = document.getElementById("allMembers");
+  showActiveMembersButton.addEventListener("click", function () {
+    showOnlyActive = true;
+    showActiveMembersButton.classList.toggle("active-button");
+    showAllMembersButton.classList.toggle("active-button");
+    applyFilters();
   });
-}
+  showAllMembersButton.addEventListener("click", function () {
+    showOnlyActive = false;
+    showActiveMembersButton.classList.toggle("active-button");
+    showAllMembersButton.classList.toggle("active-button");
+    applyFilters();
+  });
 
-// input search
-const searchInput = document.getElementById("searchInput");
-
-searchInput.addEventListener("input", function () {
-  const searchTerm = searchInput.value.toLowerCase().trim();
-
-  Array.from(allMembers).forEach((member) => {
-    let memberMatchesSearch = false;
-    Array.from(member.getElementsByTagName("td")).forEach((cell) => {
-      if (cell.textContent.toLowerCase().includes(searchTerm)) {
-        memberMatchesSearch = true;
-      }
+  function applyFilters() {
+    const searchText = $("#searchInput").val();
+    filteredData = data.filter((item) => {
+      const matchesSearch = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+      item.company.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.phone.includes(searchText) ||
+        item.email.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.country.toLowerCase().includes(searchText.toLowerCase());
+      const matchesStatus = !showOnlyActive || item.status;
+      return matchesSearch && matchesStatus;
     });
-    if (memberMatchesSearch) {
-      member.style.display = "";
-    } else {
-      member.style.display = "none";
-    }
+    destroyPagination();
+    renderTable(1, searchText);
+  }
+
+  function renderTable(page, searchText = "") {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedData = filteredData.slice(start, end);
+
+    const tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+
+    paginatedData.forEach((item) => {
+      const row = document.createElement("tr");
+      row.classList.add("table__body-row");
+
+      row.innerHTML = `
+                <td data-label='Customer Name'>${item.name}</td>
+                <td data-label='Company'>${item.company}</td>
+                <td data-label='Phone Number'>${item.phone}</td>
+                <td data-label='Email'>${item.email}</td>
+                <td data-label='Country'>${item.country}</td>
+                <td data-label='Status'><p class="${
+                  item.status ? "active" : "inactive"
+                }">${item.status ? "Active" : "Inactive"}</p></td>
+            `;
+
+      tbody.appendChild(row);
+    });
+    $(".page-info").text(
+      "Showing data " +
+        (start + 1) +
+        " to " +
+        (end < filteredData.length ? end : filteredData.length) +
+        " of " +
+        filteredData.length +
+        " entries"
+    );
+  }
+
+  function setupPagination() {
+    $("#pagination").pagination({
+      items: filteredData.length,
+      itemsOnPage: itemsPerPage,
+      onPageClick: function (pageNumber) {
+        currentPage = pageNumber;
+        renderTable(pageNumber, $("#searchInput").val());
+      },
+      displayedPages: 4,
+      edges: 1,
+      ellipsePageSet: 3,
+    });
+  }
+
+  function destroyPagination() {
+    $("#pagination").pagination("destroy");
+    setupPagination();
+  }
+
+  setupPagination();
+  renderTable(currentPage);
+
+  $("#searchInput").on("input", function () {
+    currentPage = 1;
+    applyFilters()
   });
 });
