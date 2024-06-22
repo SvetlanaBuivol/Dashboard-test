@@ -1,3 +1,33 @@
+const mobileMenuButton = document.querySelector(".nav-icon-btn");
+const mobileContainer = document.querySelector(".mobile-menu");
+const userCard = mobileContainer.querySelector(".user");
+const navigation = mobileContainer.querySelector(".header__nav");
+
+mobileMenuButton.addEventListener("click", function () {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 767) {
+    userCard.style.display =
+      userCard.style.display === "flex" ? "none" : "flex";
+    navigation.style.display =
+      navigation.style.display === "flex" ? "none" : "flex";
+    mobileContainer.style.display =
+      mobileContainer.style.display === "flex" ? "none" : "flex";
+    navigation.classList.toggle('header__nav--mobile')
+  }
+});
+
+function handleResize() {
+  if (window.innerWidth > 767) {
+    userCard.style.display = "none";
+    navigation.style.display = "none";
+    mobileContainer.style.display = "none";
+    navigation.classList.remove('header__nav--mobile')
+  }
+}
+
+window.addEventListener("resize", handleResize);
+
 document.addEventListener("DOMContentLoaded", () => {
   const data = [
     {
@@ -682,6 +712,17 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
+  const user = { name: "Evano", position: "Project Manager" };
+
+  // greatings
+  const userName = document.querySelector(".greatings");
+  const userCardName = document.querySelectorAll(".user-name");
+  const userPosition = document.querySelectorAll(".user-position");
+  userCardName.forEach((item) => (item.textContent = `${user.name}`));
+  userPosition.forEach((item) => (item.textContent = `${user.position}`));
+  userName.textContent = `Hello ${user.name}`;
+
+  // filter and pagination
   const itemsPerPage = 8;
   let currentPage = 1;
   let filteredData = [...data];
@@ -779,6 +820,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $("#searchInput").on("input", function () {
     currentPage = 1;
-    applyFilters()
+    applyFilters();
   });
 });

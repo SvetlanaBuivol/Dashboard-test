@@ -159,7 +159,7 @@ section {
 @media screen and (min-width: 1440px) {
   section {
     padding-top: 41px;
-    padding-bottom: 41px;
+    padding-bottom: 258px;
   }
 }
 
@@ -200,6 +200,7 @@ section {
 }
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -320,14 +321,22 @@ section {
   }
 }
 
-.header__nav {
+.header .header__nav {
   display: none;
   width: 100%;
 }
+.header .header__nav--mobile {
+  justify-content: flex-end;
+  width: 167px;
+}
 @media screen and (min-width: 768px) {
-  .header__nav {
+  .header .header__nav {
     display: block;
   }
+}
+
+.mobile-menu .header__nav {
+  display: none;
 }
 
 .header___nav-list {
@@ -337,20 +346,22 @@ section {
 }
 
 .header__nav-item {
+  border-radius: 8px;
+  padding: 11px 8px 11px 11px;
+}
+.header__nav-item a {
   display: flex;
   align-items: center;
-  padding: 11px 8px 11px 11px;
   width: 100%;
-  border-radius: 8px;
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
 }
-.header__nav-item svg {
+.header__nav-item a svg {
   stroke: #9197B3;
   fill: #9197B3;
   transition: fill 250ms ease-in-out, stroke 200ms ease-in-out;
 }
-.header__nav-item p {
+.header__nav-item a p {
   color: #9197B3;
   margin-left: 14px;
   transition: color 200ms ease-in-out;
@@ -358,16 +369,62 @@ section {
 .header__nav-item:hover, .header__nav-item--active {
   background-color: #5932EA;
 }
-.header__nav-item:hover p, .header__nav-item--active p {
+.header__nav-item:hover a p, .header__nav-item--active a p {
   color: #FFFFFF;
 }
-.header__nav-item:hover svg, .header__nav-item--active svg {
+.header__nav-item:hover a svg, .header__nav-item--active a svg {
   stroke: #FFFFFF;
   fill: #FFFFFF;
 }
 
 .arrow-right {
   margin-left: auto;
+}
+
+.header__nav--mobile .arrow-right {
+  display: none;
+}
+
+.header__nav--mobile .header__nav-item a {
+  flex-direction: row-reverse;
+}
+.header__nav--mobile .header__nav-item a p {
+  margin-left: 0;
+  margin-right: 14px;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  position: absolute;
+  width: 70%;
+  padding: 20px;
+  right: 0;
+  top: 72px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 1000;
+}
+@media screen and (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+.mobile-menu .header__nav {
+  display: none;
+}
+
+.mobile-menu .user {
+  display: none;
+  flex-direction: row-reverse;
+}
+.mobile-menu .user p {
+  text-align: end;
 }
 
 .user {
